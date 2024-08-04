@@ -21,8 +21,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'rest_framework',
+    'rest_framework.authtoken',
     'users',
     'interests',
+    'chats',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,10 +65,18 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
+ASGI_APPLICATION = 'backend.asgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+# Add CORS settings
 CORS_ALLOWED_ORIGINS = [
-       "http://localhost:3000",
-   ]
+    "http://localhost:3000",
+]
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
